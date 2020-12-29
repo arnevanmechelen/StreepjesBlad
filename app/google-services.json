@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "124836757118",
+    "project_id": "streepjesblad",
+    "storage_bucket": "streepjesblad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124836757118:android:9d43a4e830ee1955a6a22f",
+        "android_client_info": {
+          "package_name": "com.example.streepjesblad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124836757118-5lbgu1fu129iuliqk89sgchipo0n7gdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMELRBrT96xEt7H-3KYMszHcQ8FKjoAkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124836757118-5lbgu1fu129iuliqk89sgchipo0n7gdg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
