@@ -2,31 +2,146 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aantalTextView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/sumLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="you have logged in"
+        android:layout_marginTop="16dp"
+        android:text="Bedrag:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/amountLabel"
+        app:layout_constraintTop_toBottomOf="@+id/amountLabel" />
+
+    <TextView
+        android:id="@+id/sumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/amountTextView"
+        app:layout_constraintTop_toTopOf="@+id/sumLabel" />
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:text="@string/welcome"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="logOut"
         android:text="Log out"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:onClick="logOut"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/kriekBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:text="Kriek(3)"
+        android:onClick="addThree"
+        app:layout_constraintStart_toStartOf="@+id/frisdrankBtn"
+        app:layout_constraintTop_toTopOf="@+id/bierBtn" />
+
+    <Button
+        android:id="@+id/bierBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="bier(2)"
+        android:onClick="addTwo"
+        app:layout_constraintStart_toStartOf="@+id/redbullBtn"
+        app:layout_constraintTop_toBottomOf="@+id/redbullBtn" />
+
+    <Button
+        android:id="@+id/chipsBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:text="chips(1)"
+        android:onClick="addOne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/frisdrankBtn"
+        app:layout_constraintTop_toTopOf="@+id/frisdrankBtn" />
+
+    <Button
+        android:id="@+id/redbullBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:text="Redbull(1)"
+        android:onClick="addOne"
+        app:layout_constraintEnd_toStartOf="@+id/frisdrankBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frisdrankBtn" />
+
+    <Button
+        android:id="@+id/frisdrankBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="frisdrank(2)"
+        android:onClick="addTwo"
+        app:layout_constraintEnd_toStartOf="@+id/chipsBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/redbullBtn"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+
+    <Button
+        android:id="@+id/otherBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="wrap_content"
+        android:text="Overig(1)"
+        android:onClick="addOne"
+        app:layout_constraintStart_toStartOf="@+id/chipsBtn"
+        app:layout_constraintTop_toTopOf="@+id/kriekBtn" />
+
+    <TextView
+        android:id="@+id/amountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Aantal streepjes:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/amountTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kriekBtn" />
+
+    <TextView
+        android:id="@+id/amountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/amountLabel"
+        app:layout_constraintTop_toTopOf="@+id/amountLabel" />
 </androidx.constraintlayout.widget.ConstraintLayout>

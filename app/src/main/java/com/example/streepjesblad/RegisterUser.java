@@ -31,14 +31,14 @@ import java.util.regex.Pattern;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText passwordEditText, emailEditText, nameEditText;
+    private EditText passwordEditText, emailEditText, nameEditText, rePasswordEditText;
     private Button registerBtn;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private String userId;
 
-    public static final String TAG = "TAG";
+    public static final String TAG = "RegisterUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +61,20 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                 emailEditText.setError(null);
             }
         });
+        rePasswordEditText = (EditText) findViewById(R.id.rePasswordEditText);
+        rePasswordEditText.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                rePasswordEditText.setError(null);
+            }
+        });
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
         passwordEditText.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 passwordEditText.setError(null);
             }
         });
+
+
 
         registerBtn = (Button) findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(new View.OnClickListener(){
@@ -82,6 +90,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         final String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
         final String username = nameEditText.getText().toString().trim();
+        String password2 = rePasswordEditText.getText().toString().trim();
 
         if (username.isEmpty()) {
             nameEditText.setError("Username is required!");
@@ -110,6 +119,12 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         if (password.length() < 6) {
             passwordEditText.setError("Password length should be at least 6 characters!");
             passwordEditText.requestFocus();
+            return;
+        }
+
+        if (!checkPasswordsMatch(password, password2)){
+            rePasswordEditText.setError("Passwords don't match!");
+            rePasswordEditText.requestFocus();
             return;
         }
 
@@ -149,6 +164,14 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+    }
+
+    public boolean checkPasswordsMatch(String password1, String password2){
+        if (password1.equals(password2)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

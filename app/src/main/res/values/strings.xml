@@ -21,4 +21,6 @@
     <string name="welcomeTextView">Welkom bij het streepjesblad!</string>
     <string name="loginBtn">Login</string>
     <string name="registerBtn">Registreer</string>
+    <string name="welcome">Welcome %1$s!</string>
+    <string name="sum">€ %1$d</string>
 </resources>
