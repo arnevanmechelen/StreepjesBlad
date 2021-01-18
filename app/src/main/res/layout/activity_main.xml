@@ -38,9 +38,9 @@
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
         android:text="@string/welcome"
         android:textSize="36sp"
-        android:gravity="center"
         app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,20 +51,22 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginBottom="16dp"
         android:onClick="logOut"
         android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/adminBtn" />
 
     <Button
         android:id="@+id/kriekBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
-        android:text="Kriek(3)"
         android:onClick="addThree"
+        android:text="Kriek(3)"
         app:layout_constraintStart_toStartOf="@+id/frisdrankBtn"
         app:layout_constraintTop_toTopOf="@+id/bierBtn" />
 
@@ -73,8 +75,8 @@
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="bier(2)"
         android:onClick="addTwo"
+        android:text="bier(2)"
         app:layout_constraintStart_toStartOf="@+id/redbullBtn"
         app:layout_constraintTop_toBottomOf="@+id/redbullBtn" />
 
@@ -82,8 +84,8 @@
         android:id="@+id/chipsBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
-        android:text="chips(1)"
         android:onClick="addOne"
+        android:text="chips(1)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/frisdrankBtn"
@@ -93,8 +95,8 @@
         android:id="@+id/redbullBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
-        android:text="Redbull(1)"
         android:onClick="addOne"
+        android:text="Redbull(1)"
         app:layout_constraintEnd_toStartOf="@+id/frisdrankBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,8 +107,8 @@
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
-        android:text="frisdrank(2)"
         android:onClick="addTwo"
+        android:text="frisdrank(2)"
         app:layout_constraintEnd_toStartOf="@+id/chipsBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/redbullBtn"
@@ -116,8 +118,8 @@
         android:id="@+id/otherBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="wrap_content"
-        android:text="Overig(1)"
         android:onClick="addOne"
+        android:text="Overig(1)"
         app:layout_constraintStart_toStartOf="@+id/chipsBtn"
         app:layout_constraintTop_toTopOf="@+id/kriekBtn" />
 
@@ -144,4 +146,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/amountLabel"
         app:layout_constraintTop_toTopOf="@+id/amountLabel" />
+
+    <Button
+        android:id="@+id/adminBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/logoutBtn"
+        app:layout_constraintEnd_toStartOf="@+id/logoutBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

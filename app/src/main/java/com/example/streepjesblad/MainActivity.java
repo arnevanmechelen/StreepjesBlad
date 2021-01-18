@@ -26,17 +26,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView sumTextView, welcomeTextView, amountTextView;
     private Integer amount;
     private Double pricePerAmount = 0.30;
+    private Button adminBtn;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private String userId;
     private String username;
     private DocumentReference docRef;
-
+    private String isAdmin;
     public static final String TAG = "MainActivity";
 
     @Override
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         sumTextView = (TextView) findViewById(R.id.sumTextView);
         amountTextView = (TextView) findViewById(R.id.amountTextView);
         welcomeTextView = (TextView) findViewById(R.id.welcomeTextView);
+        adminBtn = (Button) findViewById(R.id.adminBtn);
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -68,11 +71,24 @@ public class MainActivity extends AppCompatActivity {
                 String username = docSnapshot.getString("username");
                 String welcomeText = getString(R.string.welcome, username);
                 welcomeTextView.setText(welcomeText);
+                isAdmin = docSnapshot.get("isAdmin").toString();
+                checkIfAdmin(isAdmin);
                 amount = Integer.parseInt(docSnapshot.get("amount").toString());
                 amountTextView.setText(docSnapshot.get("amount").toString());
                 calculateSum();
             }
         });
+
+        adminBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.adminBtn:
+                startActivity(new Intent(this, AdminActivity.class));
+                break;
+        }
     }
 
     public void logOut(View view) {
@@ -120,5 +136,12 @@ public class MainActivity extends AppCompatActivity {
         format.setCurrency(Currency.getInstance("EUR"));
         String sumText = format.format(sum);
         sumTextView.setText(sumText);
+    }
+
+
+    private void checkIfAdmin(String isAdmin){
+        if(isAdmin.equals("1")){
+            adminBtn.setVisibility(View.VISIBLE);
+        }
     }
 }

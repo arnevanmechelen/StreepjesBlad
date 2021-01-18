@@ -141,6 +141,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     user.put("username", username);
                     user.put("email", email);
                     user.put("amount", 0);
+                    user.put("isAdmin", "0");
                     docRef.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
